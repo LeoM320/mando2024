@@ -3,14 +3,14 @@
  * @author MEOLANS, Leandro Tomás (meolansleandrotomas@outlook.com)
  * @brief Firmware mando para tablero de voley
  * @version 0.1
- * @date 05-12-2024
+ * @date 12-12-2024
  * 
  * @copyright Copyright (c) 2024
  * 
  */
 
 #include <Arduino.h>
-#define VERSION "05-12-2024-MANDO-V0.1"
+#define VERSION "12-12-2024-MANDO-V0.1"
 
 typedef struct {
   const uint8_t PIN;
