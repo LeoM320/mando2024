@@ -2,15 +2,15 @@
  * @file main.cpp
  * @author MEOLANS, Leandro Tomás (meolansleandrotomas@outlook.com)
  * @brief Firmware mando para tablero de voley
- * @version 0.1
- * @date 12-12-2024
+ * @version 0.2
+ * @date 13-12-2024
  * 
  * @copyright Copyright (c) 2024
  * 
  */
 
 #include <Arduino.h>
-#define VERSION "12-12-2024-MANDO-V0.1"
+#define VERSION "13-12-2024-MANDO-V0.2"
 
 typedef struct {
   const uint8_t PIN;
@@ -45,7 +45,7 @@ uint8_t botonPulsado=0; //Bandera de pulsación
  */
 uint8_t contador=0;
 uint8_t sonando=0; //Bandera de buzzer activo
-
+float retardo=0; //Retardo aceleración
 unsigned long tiempoFuturo=0; //ms hasta la proxima pulsación
 /**
  * @brief ms de la pulsación anterior 
@@ -133,9 +133,9 @@ void EnviarPulsacion(uint8_t contador){
  * @return float 
  */
 float Retardo(uint8_t contador){
-  float ret = CST_RETARDO/pow(contador*1.0+1,CST_FCT_ACCEL);
-  if(ret>=CST_LIM_ACCEL){
-    return ret;
+  retardo = CST_RETARDO/pow(contador*1.0+1,CST_FCT_ACCEL);
+  if(retardo>=CST_LIM_ACCEL){
+    return retardo;
   }else{
     return CST_LIM_ACCEL;
   }
